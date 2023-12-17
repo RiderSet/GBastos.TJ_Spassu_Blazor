@@ -21,6 +21,7 @@ namespace Manager.Implementation
         {
             return await _repository.GetLivroAsync(codl);
         }
+<<<<<<< HEAD
 
         public async Task DeleteLivroAsync(int codl)
         {
@@ -36,5 +37,7 @@ namespace Manager.Implementation
         {
             return await _repository.UpdateLivroAsync(livro);
         }
+=======
+>>>>>>> 51c3c4458ceaaa5b25419d46fb08c636033c7f4f
     }
 }
