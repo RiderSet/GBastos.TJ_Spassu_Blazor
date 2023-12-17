@@ -6,10 +6,7 @@ namespace Domain.Entities
     {
         [Key]
         public int Codl { get; set; }
-<<<<<<< HEAD
 
-=======
->>>>>>> 51c3c4458ceaaa5b25419d46fb08c636033c7f4f
         public string Titulo { get; set; }
         public string Editora { get; set; }
         public int Edicao { get; set; }
