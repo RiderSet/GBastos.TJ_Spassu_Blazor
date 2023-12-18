@@ -29,6 +29,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
     <ProjectReference Include="..\Infra_Data\Infra_Data.csproj" />
+    <ProjectReference Include="..\Service\Manager.csproj" />
   </ItemGroup>
 
 </Project>

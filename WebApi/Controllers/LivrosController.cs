@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-﻿using Domain.Entities;
-using Manager.Interfaces;
-=======
-﻿using Manager.Interfaces;
->>>>>>> 51c3c4458ceaaa5b25419d46fb08c636033c7f4f
+using Domain.Entities;
+using Manager.Interfaces.Livros;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace TJ_Spassu_Blazor.Web.Controllers
 {
@@ -37,46 +31,30 @@ namespace TJ_Spassu_Blazor.Web.Controllers
 
         // POST api/<LivrosController>
         [HttpPost]
-<<<<<<< HEAD
         public async Task<IActionResult> Post(Livro livro)
         {
             var livroInserido = _LivroManager.InsertLivroAsync(livro);
             return CreatedAtAction(nameof(Get), new { codl = livro.Codl }, livro);
         }
 
-        // PUT api/<LivrosController>/5
+        // PUT api/<LivrosController>
         [HttpPut]
         public async Task<IActionResult> Put(Livro livro)
         {
             var livroAtualizado = await _LivroManager.UpdateLivroAsync(livro);
             if (livroAtualizado == null)
             {
-                return null;
+                return NotFound();
             }
             return Ok(livroAtualizado);
-=======
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<LivrosController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
->>>>>>> 51c3c4458ceaaa5b25419d46fb08c636033c7f4f
         }
 
         // DELETE api/<LivrosController>/5
-        [HttpDelete("{id}")]
-<<<<<<< HEAD
+        [HttpDelete("{codl}")]
         public async Task<IActionResult> Delete(int codl)
         {
             await _LivroManager.DeleteLivroAsync(codl);
             return NoContent();
-=======
-        public void Delete(int id)
-        {
->>>>>>> 51c3c4458ceaaa5b25419d46fb08c636033c7f4f
         }
     }
 }

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-=======
-<Project Sdk="Microsoft.NET.Sdk">
->>>>>>> 51c3c4458ceaaa5b25419d46fb08c636033c7f4f
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -11,13 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-<<<<<<< HEAD
-    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    <PackageReference Include="fluentvalidation.aspnetcore" Version="11.3.0" />
   </ItemGroup>
 
   <ItemGroup>
-=======
->>>>>>> 51c3c4458ceaaa5b25419d46fb08c636033c7f4f
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
