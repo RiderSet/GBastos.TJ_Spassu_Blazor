@@ -1,13 +1,14 @@
 ﻿using Domain.Entities;
+using Domain.ViewModel;
 
 namespace Manager.Interfaces.Livros
 {
     public interface ILivroManager
     {
-        Task<Livro> GetLivroAsync(int codl);
+        Task<LivroVM> DeleteLivroAsync(int codl);
+        Task<IEnumerable<LivroVM>> GetLivroAsync(int codl);
         Task<IEnumerable<Livro>> GetLivrosAsync();
-        Task<Livro> InsertLivroAsync(Livro livro);
-        Task<Livro> UpdateLivroAsync(Livro livro);
-        Task DeleteLivroAsync(int codl);
+        Task<LivroVM> InsertLivroAsync(CreateLivroVM novoLivro);
+        Task<LivroVM> UpdateLivroAsync(UpDateLivroVM alteraLivro);
     }
 }

@@ -1,15 +1,17 @@
+using Domain.Entities;
 using Infra_Data.Context;
 using Infra_Data.Repositories;
 using Manager.Implementation;
 using Manager.Interfaces.Livros;
+using Manager.Validation;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Net.Http.Headers;
+using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -23,8 +25,10 @@ builder.Services.AddDbContext<CTX>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Conn"));
 });
 
+builder.Services.AddScoped<IValidator<Livro>, LivroValidator>();
 builder.Services.AddScoped<ILivroRepository, LivroRepository>();
 builder.Services.AddScoped<ILivroManager, LivroManager>();
+
 /*
 builder.Services.AddScoped<IAutorRepository, AutorRepository>();
 builder.Services.AddScoped<IAssuntoRepository, AssuntoRepository>();

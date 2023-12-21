@@ -10,7 +10,7 @@ namespace Domain.Entities
         public string Titulo { get; set; }
         public string Editora { get; set; }
         public int Edicao { get; set; }
-        public string AnoPublicacao { get; set; }
+        public DateTime AnoPublicacao { get; set; }
 
         public ICollection<Autor> Autores { get; set; }
         public ICollection<Assunto> Assuntos { get; set; }

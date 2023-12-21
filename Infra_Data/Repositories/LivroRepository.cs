@@ -16,41 +16,60 @@ namespace Infra_Data.Repositories
 
         public async Task<IEnumerable<Livro>> GetLivrosAsync()
         {
-            return await _context.Livros.AsNoTracking().ToListAsync();
+            //return await _context.Livros.AsNoTracking().ToListAsync();
+            return await _context.Livros
+                .Include(p => p.Assuntos)
+                .Include(p => p.Autores)
+                .AsNoTracking().ToListAsync();
         }
 
         public async Task<Livro> GetLivroAsync(int codl)
         {
-            return await _context.Livros.FindAsync(codl);
+            //return await _context.Livros.FindAsync(codl);
+            return await _context.Livros
+                .Include(p => p.Assuntos)
+                .Include(p => p.Autores)
+                .SingleOrDefaultAsync(p => p.Codl == codl);
         }
 
-        public async Task<Livro> InsertLivroAsync(Livro livro)
+        public async Task<Livro> InsertLivroAsync(Livro Livro)
         {
-            await _context.Livros.AddAsync(livro);
+            await _context.Livros.AddAsync(Livro);
             await _context.SaveChangesAsync();
-            return livro;
+            return Livro;
         }
 
-        public async Task<Livro> UpdateLivroAsync(Livro livro)
+        public async Task<Livro> UpdateLivroAsync(Livro Livro)
         {
-            var livroConsultado = await _context.Livros.FindAsync(livro.Codl);
+            var livroConsultado = await _context.Livros.FindAsync(Livro.Codl);
 
             if (livroConsultado == null)
             {
                 return null;
             }
 
-            _context.Entry(livroConsultado).CurrentValues.SetValues(livro);
+            _context.Entry(livroConsultado).CurrentValues.SetValues(Livro);
             _context.Livros.Update(livroConsultado);
             await _context.SaveChangesAsync();
             return livroConsultado;
         }
 
-        public async Task DeleteLivroAsync(int codl)
+        public async Task<Livro> DeleteLivroAsync(int codl)
         {
+            /*
             var livroConsultado = await _context.Livros.FindAsync(codl);
             _context.Livros.Remove(livroConsultado);
             await _context.SaveChangesAsync();
+            */
+            var livroConsultado = await _context.Livros.FindAsync(codl);
+            if (livroConsultado == null)
+            {
+                return null;
+            }
+            var livroRemovido = _context.Livros.Remove(livroConsultado);
+            await _context.SaveChangesAsync();
+            return livroRemovido.Entity;
+
         }
     }
 }
